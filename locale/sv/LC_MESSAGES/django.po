@@ -1,0 +1,112 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-08-31 15:01+0600\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: templates/mainapp/add.html:48
+msgid "Часы"
+msgstr "Klocka"
+
+#: templates/mainapp/add.html:49
+msgid "Количество"
+msgstr "belopp"
+
+#: templates/mainapp/add.html:55
+msgid "Комментарий"
+msgstr "En kommentar"
+
+#: templates/mainapp/add.html:59 templates/mainapp/suc.html:6
+msgid "Отправить"
+msgstr "Skicka meddelande"
+
+#: templates/mainapp/add.html:63
+msgid "Добавить"
+msgstr "Lägg till"
+
+#: templates/mainapp/add.html:65
+msgid "Удалить"
+msgstr "Radera"
+
+#: templates/mainapp/base.html:32
+msgid "Войти"
+msgstr "Logga in"
+
+#: templates/mainapp/base.html:43
+msgid "Очень важно!"
+msgstr "Väldigt viktigt!"
+
+#: templates/mainapp/base.html:44
+msgid "Часы нужно заполнять не позже 24-00 текущего дня!"
+msgstr "Öppettiderna måste fyllas senast 24-00 den aktuella dagen!"
+
+#: templates/mainapp/index.html:8
+msgid "Заполнить часы"
+msgstr "Fyll i timmar"
+
+#: templates/mainapp/index.html:10
+msgid "Отчет"
+msgstr "Tidraport"
+
+#: templates/mainapp/index.html:21
+msgid "Текущий Мес."
+msgstr "Denna månad"
+
+#: templates/mainapp/index.html:30
+msgid "Прошлый Мес."
+msgstr "Förra månaden"
+
+#: templates/mainapp/index.html:39
+msgid "Текущая Нед."
+msgstr "Denna vecka"
+
+#: templates/mainapp/index.html:48
+msgid "Прошлая Нед."
+msgstr "Förra veckan"
+
+#: templates/mainapp/send_form.html:18
+msgid "Идет загрузка!"
+msgstr "Läser in!"
+
+#: templates/mainapp/send_form.html:19
+msgid "Ожидайте"
+msgstr "Förvänta"
+
+#: templates/mainapp/send_form.html:22
+msgid "Сначало Авторизуйтесь"
+msgstr "Första logga in"
+
+#: templates/mainapp/suc.html:5
+msgid "Отчет был успешно отпрвлен"
+msgstr "Rapporten skickades framgångsrikt"
+
+#: templates/mainapp/suc.html:6
+msgid "Вернуться на главную"
+msgstr "Gå tillbaka till startsidan"
+
+#: templates/registration/login.html:17
+msgid "Войдите в свой аккаунт"
+msgstr "Logga in på ditt konto"
+
+#: templates/registration/login.html:26
+msgid "Авторизоваться"
+msgstr "Logga in"
+
+#~ msgid "Выберите объект"
+#~ msgstr "Välj objekt"
+
+#~ msgid "Выберите работу"
+#~ msgstr "Välj ett jobb"

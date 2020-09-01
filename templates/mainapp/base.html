@@ -1,0 +1,43 @@
+{% load i18n %}
+{% load static %}
+<!doctype  html>
+<html  lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" media="all" href="{% static "css/style.css" %}" type="text/css">
+<link  rel="stylesheet"  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"  crossorigin="anonymous">
+<title>OMHUS</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+</head>
+                                        <!-- выбор языка для сайта-->
+                            
+<body class='body'>
+  <div  class="">
+    <div  class="">
+      <content>
+      <div class="text-center">
+         </div>
+      <h1  class="text-center t">
+        
+    {% if user.is_authenticated %}
+<h1 class="text-center name">
+    <a href = "{% url 'logout' %}" class="user_name">{{user.useronec.usernameforonec}}</a>
+    </h1>
+    <h4 class='text-center code'>{{user.useronec.userid}}</h4>
+    {% else %}
+    {% block login %}
+      {% endblock %}
+    {% endif %}
+      </h1>
+
+      {% block main %}
+      {% endblock %}
+      </content>
+    </div>
+  </div>
+
+  
+
+  
+</body>
+</html>

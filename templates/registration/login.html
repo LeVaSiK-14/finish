@@ -1,0 +1,46 @@
+{% extends 'mainapp/base.html' %}
+{% load i18n %}
+
+
+{% load crispy_forms_tags %}
+
+{% block login %}
+<style type="text/css">
+	#btns {
+		background-color: #FF4500;
+	}
+</style>
+<div class="text-center">
+
+<div class="carda">
+
+<h4 class="card-title">{% trans 'Войдите в свой аккаунт'%}</h4>
+
+<form method="post">
+{% csrf_token %}
+<input type="hidden" name="next" value="{{ next }}">
+
+{{ form|crispy }}
+
+
+<button type="submit" id="btns" class="btn btn-block">{% trans 'Авторизоваться'%}</button>
+</form>
+</div>
+
+</div>
+<form action="{% url 'set_language' %}" method="post" class=' l'>{% csrf_token %}
+                        <input name="next" type="hidden" value="{{ redirect_to }}">
+                        <select name="language" class='lang '>
+                            {% get_current_language as LANGUAGE_CODE %}
+                            {% get_available_languages as LANGUAGES %}
+                            {% get_language_info_list for LANGUAGES as languages %}
+                            {% for language in languages %}
+                                <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %}
+                                        selected{% endif %}>
+                                    {{ language.code }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                        <input type="submit" value="Go" class='lang-btn'>
+                    </form>
+{% endblock %}

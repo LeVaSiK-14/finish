@@ -1,0 +1,72 @@
+{% extends 'mainapp/base.html' %}
+{% load i18n %}
+
+{% block main %}
+
+{% if user.is_authenticated %}
+<h3 class='text-center clo'>
+ <a href="{% url 'send_form' %}" class='cl'>{% trans 'Заполнить часы'%}</a>
+</h3>
+<h1 class='report'>{% trans 'Отчет' %}</h1>
+
+<div class='r-b'>
+<div class='week-div'>
+
+<form action="{%url 'success_month'%}" method="post">
+	{%csrf_token%}
+	<input type="text" name="wayforbd" id="id_wayforbd" value="{{request.user.useronec.wayforbd}}" hidden="">
+	<input type="text" name="username" id="id_username" value="{{request.user.useronec.usernameforonec}}" hidden="">
+	<input type="text" name="password" id="id_password" value="{{request.user.useronec.passwordforonec}}" hidden="">
+	<input type="text" name="iduser" id="id_iduser" value="{{request.user.useronec.userid}}" hidden="">
+	<input type="text" name="month" id="id_month" value="3" readonly="" hidden="">
+	<input type="submit" name="submit" value="{% trans 'Текущая Нед.'%}" class='btn-report'>
+    </form>
+
+<form action="{%url 'success_lastweek'%}" method="post">
+	{%csrf_token%}
+	<input type="text" name="wayforbd" id="id_wayforbd" value="{{request.user.useronec.wayforbd}}" hidden="">
+	<input type="text" name="username" id="id_username" value="{{request.user.useronec.usernameforonec}}" hidden="">
+	<input type="text" name="password" id="id_password" value="{{request.user.useronec.passwordforonec}}" hidden="">
+	<input type="text" name="iduser" id="id_iduser" value="{{request.user.useronec.userid}}" hidden="">
+	<input type="text" name="lastweek" id="id_lastweek" value="4" readonly="" hidden="">
+	<input type="submit" name="submit" value="{% trans 'Прошлая Нед.'%}" class='btn-report'>
+    </form>
+
+	</div>
+<div class='month-div'>
+
+<form action="{%url 'success_allper'%}" method="post">
+	{%csrf_token%}
+	<input type="text" name="wayforbd" id="id_wayforbd" value="{{request.user.useronec.wayforbd}}" hidden="">
+	<input type="text" name="username" id="id_username" value="{{request.user.useronec.usernameforonec}}" hidden="">
+	<input type="text" name="password" id="id_password" value="{{request.user.useronec.passwordforonec}}" hidden="">
+
+	<input type="text" name="iduser" id="id_iduser" value="{{request.user.useronec.userid}}" hidden="">
+<input type="text" name="allperiod" id="id_allperiod" value="1" readonly="" hidden="">
+	<input type="submit" name="submit" value="{% trans 'Текущий Мес.'%}" class='btn-report'> 
+    </form>
+
+<form action="{%url 'success_week'%}" method="post">
+	{%csrf_token%}
+	<input type="text" name="wayforbd" id="id_wayforbd" value="{{request.user.useronec.wayforbd}}" hidden="">
+	<input type="text" name="username" id="id_username" value="{{request.user.useronec.usernameforonec}}" hidden="">
+	<input type="text" name="password" id="id_password" value="{{request.user.useronec.passwordforonec}}" hidden="">
+	<input type="text" name="iduser" id="id_iduser" value="{{request.user.useronec.userid}}" hidden="">
+	<input type="text" name="week" id="id_week" value="2" readonly="" hidden="">
+	<input type="submit" name="submit" value="{% trans 'Прошлый Мес.'%}" class='btn-report'>
+    </form>
+
+</div>
+
+
+</div>
+
+{%endif%}
+
+{% if user.is_authenticated %}
+<footer id="footer">
+   <h1 class='text-center imp'>{% trans 'Очень важно!' %}</h1>
+  <h3 class='text-center cloc'>{% trans 'Часы нужно заполнять не позже 24-00 текущего дня!'%}</h3>
+  </footer>
+{%endif%}
+{% endblock main %}

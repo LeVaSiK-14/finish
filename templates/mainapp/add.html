@@ -1,0 +1,151 @@
+{%extends 'mainapp/base.html'%}
+{% load i18n %}
+
+
+{%block main %}
+{% if user.is_authenticated %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>OMHUS</title>
+</head>
+<body>
+    <form id="form1" method="POST">{% csrf_token %}
+        <div id="formAlumnoContent">
+        
+
+            {{ form.management_form }}
+            {% for f in form %}
+
+            <input type="text" name="form-0-wayforbd" id="id_form-0-wayforbd" value="{{request.user.useronec.wayforbd}}" readonly="" hidden="">
+
+            <input type="text" name="form-0-userid2" id="id_form-0-userid2" value="{{request.user.useronec.userid}}" readonly="" hidden="">
+
+            <input type="text" name="form-0-passwordforonec2" id="id_form-0-passwordforonec2" value="{{request.user.useronec.passwordforonec}}" readonly="" hidden="">
+
+            <input type="text" name="form-0-usernameonec" id="id_form-0-usernameonec" value="{{request.user.useronec.usernameforonec}}" readonly="" hidden="">
+        <div class='date-sel '>
+
+        <p class='text-center date'>{% now "j N Y" %}</p>
+       
+        <select name='form-0-workobj' id="id_form-0-workobj" class='work'>
+
+            {%for x in workobj%}
+            <option>{{x}}</option>
+            {%endfor%}
+        </select>
+        </div><br><br><br>
+
+
+<div class='sel-t-k'>
+
+        <select name='form-0-job2' id="id_form-0-job2" class='job'>
+     
+            {%for j in job %}
+            <option >{{j}}</option>
+            {%endfor%}
+        </select><br>
+        <input type='number' id='id_form-0-time2' name='form-0-time2' required="" placeholder='{% trans "Часы"%}' class='time'><br>
+        <input type='number' id='id_form-0-kol2' name='form-0-kol2' required="" placeholder='{% trans "Количество"%}' class='kol'>
+        </div><br>
+            <p></p>
+            {% endfor %}
+            
+        </div>
+        <textarea  class="comments" cols="33" placeholder="{% trans 'Комментарий'%}" name="form-0-comments" id="id_form-0-comments"></textarea><br><br>
+        
+        
+
+        <button type="submit" class='send '>{% trans 'Отправить'%}</button>
+
+    </form>
+    <p></p>
+    <button onclick="addInput()" class='add'>{% trans 'Добавить'%}</button>
+    <p></p>
+    <button onclick="deleteInput()" class='del'>{% trans 'Удалить'%}</button>
+
+
+
+
+    <script>
+        function addInput() {
+            var forms = document.querySelector('#id_form-TOTAL_FORMS')
+
+            var newName = document.querySelector('#id_form-0-usernameonec').cloneNode( true );
+            newName.name = 'form-'+forms.value+'-usernameonec';
+            newName.id = 'id_form-'+forms.value+'-usernameonec';
+
+            var newPass = document.querySelector('#id_form-0-passwordforonec2').cloneNode( true );
+            newPass.name = 'form-'+forms.value+'-passwordforonec2';
+            newPass.id = 'id_form-'+forms.value+'-passwordforonec2';
+
+
+            var newUrl = document.querySelector('#id_form-0-wayforbd').cloneNode( true );
+            newUrl.name = 'form-'+forms.value+'-wayforbd';
+            newUrl.id = 'id_form-'+forms.value+'-wayforbd';
+
+            
+            var newJob= document.querySelector('#id_form-0-job2').cloneNode( true );
+            newJob.name = 'form-'+forms.value+'-job2';
+            newJob.id = 'id_form-'+forms.value+'-job2';
+            var newTime= document.querySelector('#id_form-0-time2').cloneNode( true );
+            newTime.name = 'form-'+forms.value+'-time2';
+            newTime.id = 'id_form-'+forms.value+'-time2';
+
+            var newKol= document.querySelector('#id_form-0-kol2').cloneNode( true );
+            newKol.name = 'form-'+forms.value+'-kol2';
+            newKol.id = 'id_form-'+forms.value+'-kol2';
+
+            var newId = document.querySelector('#id_form-0-userid2').cloneNode( true );
+            newId.name = 'form-'+forms.value+'-userid2';
+            newId.id = 'id_form-'+forms.value+'-userid2';
+
+
+            document.querySelector('#formAlumnoContent').appendChild(newJob);
+            document.querySelector('#formAlumnoContent').appendChild(newTime);
+            document.querySelector('#formAlumnoContent').appendChild(newKol);
+            document.querySelector('#formAlumnoContent').appendChild(newId);
+            document.querySelector('#formAlumnoContent').appendChild(newName);
+            document.querySelector('#formAlumnoContent').appendChild(newPass);
+            document.querySelector('#formAlumnoContent').appendChild(newUrl);
+
+
+            //
+            var p = document.createElement("p");
+            document.querySelector('#formAlumnoContent').appendChild(p);
+            //
+            forms.value = parseInt(forms.value) + 1;
+        }
+        function deleteInput() {
+            var forms = document.querySelector('#id_form-TOTAL_FORMS');
+            forms.value = parseInt(forms.value) - 1;
+            //
+
+            removeName = '#id_form-'+forms.value+'-usernameonec';
+            removePass = '#id_form-'+forms.value+'-passwordforonec2';
+            removeId = '#id_form-'+forms.value+'-userid2';
+            removeJob = '#id_form-'+forms.value+'-job2';
+            removeTime = '#id_form-'+forms.value+'-time2';
+            removeKol = '#id_form-'+forms.value+'-kol2';
+            removeUrl = '#id_form-'+forms.value+'-wayforbd';
+
+
+            document.querySelector(removeId).remove();
+            document.querySelector(removeName).remove();
+            document.querySelector(removePass).remove();
+            document.querySelector(removeJob).remove();
+            document.querySelector(removeTime).remove();
+            document.querySelector(removeKol).remove();
+            document.querySelector(removeUrl).remove();
+        }
+    </script>
+
+{% else %}
+Сначало Авторизуйтесь <a href="{% url 'login' %}">login</a>
+{% endif %}
+</body>
+</html>
+
+{%endblock%}

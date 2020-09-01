@@ -1,0 +1,13 @@
+{% extends 'mainapp/base.html' %}
+{% load i18n %}
+
+{% block main %}
+<h1>{% trans 'Отчет был успешно отпрвлен'%}</h1>
+{% trans 'Вернуться на главную' %} <a href="{% url 'index' %}">{% trans 'Отправить'%}</a>
+
+
+{% endblock main %}
+
+
+
+
